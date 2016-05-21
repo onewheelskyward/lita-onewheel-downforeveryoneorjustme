@@ -4,8 +4,8 @@ require 'nokogiri'
 module Lita
   module Handlers
     class OnewheelDownForEveryoneOrJustMe < Handler
-      route /isitdown (.*)/, :down_for_everyone_or_just_me, command: true
-      route /down (.*)/, :down_for_everyone_or_just_me, command: true
+      route /^isitdown (.*)/, :down_for_everyone_or_just_me, command: true
+      route /^down (.*)/, :down_for_everyone_or_just_me, command: true
 
       def down_for_everyone_or_just_me(response)
         uri = 'www.downforeveryoneorjustme.com/' + response.matches[0][0]
