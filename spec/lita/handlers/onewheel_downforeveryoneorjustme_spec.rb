@@ -1,9 +1,12 @@
 require 'spec_helper'
 
-describe Lita::Handlers::OnewheelDownForEveryOneOrJustMe, lita_handler: true do
+describe Lita::Handlers::OnewheelDownForEveryoneOrJustMe, lita_handler: true do
+  it { is_expected.to route_command('isitdown www.com') }
+  it { is_expected.to route_command('down www.com') }
+
   it 'will display up' do
     allow(RestClient).to receive(:get) { File.open('spec/fixtures/up.html').read }
-    send_command '!isitdown www.doooooogle.com'
+    send_command '!isitdown www.google.com'
     expect(replies.last).to eq('It\'s just you.  http://www.google.com is up.')
   end
 
